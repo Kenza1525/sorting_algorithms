@@ -18,12 +18,12 @@ void selection_sort(int *array, size_t size)
 				k = j;
 			}
 		}
-		if (min != array[i])
+		if (min < array[i] || min > array[i])
 		{
 			a = array[i];
 			array[i] = array[k];
 			array[k] = a;
+			print_array(array, size);
 		}
-                print_array(array, size);
 	}
 }
