@@ -57,6 +57,13 @@ void quick_sort(int *array, size_t size)
 {
 	int pi = partition(array, 0, size - 1);
 
-	quick_sort(array, pi - 1);
-	quick_sort(array, size - 1);	
+	int a = 1;
+	if (a < pi)
+	{
+		quick_sort(array, a + 1);
+	}
+	if ((size_t)pi <= size - 1)
+	{
+		quick_sort(array, pi + 1);
+	}
 }
