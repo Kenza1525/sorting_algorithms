@@ -17,7 +17,7 @@ void swap(int *a, int *b)
 }
 
 /**
- * partition - divise the array into two subarrays
+ * lomuto_partition - divise the array into two subarrays
  * @array: the array to be subdivided
  * @low: first index
  * @high: last index
@@ -25,7 +25,7 @@ void swap(int *a, int *b)
  * Return: an index
  */
 
-int partition(int *array, int low, int high, size_t size)
+int lomuto_partition(int *array, int low, int high, size_t size)
 {
 	int pivot;
 	int i, j;
@@ -58,22 +58,22 @@ int partition(int *array, int low, int high, size_t size)
 	return (i + 1);
 }
 /**
- * lomuto_sort - partitions an array into two parts
+ * recursive_sort - partitions an array into two parts
  * @array: array to be sorted
  * @low: index of the greater element
  * @high: index of the last element
  * @size: size of the array
  */
 
-void lomuto_sort(int array[], int low, int high, size_t size)
+void recursive_sort(int array[], int low, int high, size_t size)
 {
 	int p;
 
 	if (low < high)
 	{
-		p = partition(array, low, high, size);
-		lomuto_sort(array, low, p - 1, size);
-		lomuto_sort(array, p + 1, high, size);
+		p = lomuto_partition(array, low, high, size);
+		recursive_sort(array, low, p - 1, size);
+		recursive_sort(array, p + 1, high, size);
 
 	}
 }
@@ -89,5 +89,5 @@ void quick_sort(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
 		return;
-	lomuto_sort(array, 0, size - 1, size);
+	recursive_sort(array, 0, size - 1, size);
 }
